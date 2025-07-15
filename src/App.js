@@ -1,24 +1,53 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 
 function App() {
+
+  const [texto, setTexto] = useState("");
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <article>
+      {/* Header */}
+      <header>
+        <div>
+          <h1>Bienvenido a la Ruleta Aleatoria</h1>
+        </div>      
       </header>
-    </div>
+
+      {/* Body */}
+      <main>
+        {/* Left */}
+        <section>
+          <div className='circle'>
+            
+          </div>
+        </section>
+
+        {/* Right */}
+        <section>
+
+          <div className='buttons'>
+            <button>Iniciar</button>
+            <button>Reiniciar</button>
+            <button>Agregar</button>
+            <button>Borrar</button>
+          </div>
+
+          <div className="entry">
+                 <input
+                    type="text"
+                    value={texto}
+                    onChange={(e) => setTexto(e.target.value)}
+                    placeholder="Escribe algo..."
+                  />
+                  <p>Opciones Agregadas: {texto}</p>
+          </div>
+
+
+        </section>
+      </main>
+      
+    </article>
   );
 }
 
