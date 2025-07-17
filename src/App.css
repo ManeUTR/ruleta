@@ -15,7 +15,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    background-color: rgb(9, 80, 179);
   }
 
   header h1{
@@ -26,9 +26,9 @@
     display: flex;
     min-height: auto;
     flex-direction: row;
-    background-color: green;
+    background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-color: black;
+    border-color: rgb(0, 0, 0);
   }
 
   section {
@@ -37,23 +37,11 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+    background-color: rgb(205, 172, 236);
     border-style: solid;
     border-color: black;
     min-height: 10vh;
   }
-
-  section div {
-    background-color: white;
-    width: 100%;
-  }
-
-.circle {
-  background-color: yellow;
-  width: 100%;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
-}
 
 
 .content {
@@ -62,7 +50,7 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  background-color: brown;
+  background-color: rgb(232, 218, 62);
 }
 
 .buttons{
@@ -75,7 +63,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  border-style: black solid;
+  border-style: rgb(0, 0, 0) solid;
 }
 
 .entry input {
