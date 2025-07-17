@@ -3,43 +3,43 @@ import { Wheel } from "react-custom-roulette";
 import './App.css';
 
 function App() {
-  // Estado para las opciones de la ruleta, con opciones iniciales
+  //State for the roulette's initial options
   const [data, setData] = useState([
-    { option: 'Osmar' },
+    { option: 'Osmar' }, //Array that stores options, example with our beloved Osmar <3
   ]);
 
-  const [mustSpin, setMustSpin] = useState(false);
-  const [prizeNumber, setPrizeNumber] = useState(0);
-  const [winner, setWinner] = useState('');
-  const [texto, setTexto] = useState("");  // para input nuevo
+  const [mustSpin, setMustSpin] = useState(false); //Not spinning at the beggining
+  const [prizeNumber, setPrizeNumber] = useState(0); //To select which number is going the be the winner
+  const [winner, setWinner] = useState(''); //To choose the winer
+  const [texto, setTexto] = useState("");  // When we add new things
 
-  // Función para iniciar el giro
+  // Spin function
   const handleSpinClick = () => {
-    if (data.length === 0) return; // no girar sin opciones
-    const newPrizeNumber = Math.floor(Math.random() * data.length);
-    setPrizeNumber(newPrizeNumber);
-    setMustSpin(true);
-    setWinner('');
+    if (data.length === 0) return; // Don't spin if array is empty
+    const newPrizeNumber = Math.floor(Math.random() * data.length); //Will generata random number less than aray lenght
+    setPrizeNumber(newPrizeNumber); //Winner number
+    setMustSpin(true); //We start the spinn
+    setWinner('');  //Winner is set top none
   };
 
-  // Agregar nueva opción
+  // New option
   const handleAgregar = () => {
-    if (texto.trim() === "") return;
-    setData([...data, { option: texto }]);
-    setTexto("");
+    if (texto.trim() === "") return; //If user doesn't write anything, don't add
+    setData([...data, { option: texto }]); //Add texto to data array
+    setTexto(""); //We restart texto
   };
 
-  // Borrar última opción
+  // Undo
   const handleBorrar = () => {
-    if (data.length === 0) return;
-    setData(data.slice(0, data.length - 1));
+    if (data.length === 0) return; //Won't do anything if array's empty
+    setData(data.slice(0, data.length - 1)); //We take the array, forgetting the last value
   };
 
-  // Reiniciar (vaciar opciones y estado)
+  // Restart
   const handleReiniciar = () => {
-    setData([]);
-    setWinner('');
-    setMustSpin(false);
+    setData([]); //Empty array
+    setWinner(''); //No winner
+    setMustSpin(false); //Stop spinnig
   };
 
   return (
@@ -50,12 +50,15 @@ function App() {
         </div>      
       </header>
 
-      <main style={{ display: 'flex', gap: '2rem', padding: '1rem' }}>
-        {/* Left: ruleta */}
-        <section style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <main>
+        {/* Left: Roulette */}
+        <section>
+
           <div className='circle'>
+            {/* If data length its greater than 0, we execute the code for spinning */}
             {data.length > 0 ? (
             <Wheel
+             //We fill the values of wheel with the variable we declared on functions
               mustStartSpinning={mustSpin}
               prizeNumber={prizeNumber}
               data={data}
@@ -72,8 +75,9 @@ function App() {
 
           </div>
         </section>
-        {/* Right: controles */}
-        <section style={{ flex: 1 }}>
+        {/* Right: Buttons and Entry */}
+        <section>
+          {/* Buttons for executing the functions */}
           <div className='buttons'>
             <button onClick={handleSpinClick}>Iniciar</button>
             <button onClick={handleReiniciar}>Reiniciar</button>
@@ -82,6 +86,7 @@ function App() {
           </div>
 
           <div className="entry" style={{ marginTop: '1rem' }}>
+            {/* Input for writing the options */}
             <input
               type="text"
               value={texto}
@@ -89,9 +94,10 @@ function App() {
               placeholder="Escribe algo..."
               style={{ padding: '8px', width: '100%', fontSize: '1rem' }}
             />
+            {/* Show actual options */}
             <p>Opciones Agregadas: {data.map(d => d.option).join(', ') || 'Ninguna'}</p>
           </div>
-
+          {/* Show winner */}
           {winner && (
             <h2 style={{ marginTop: "20px", fontSize: "24px", color: "#333" }}>
              Ganador: {winner} 
